@@ -8,8 +8,8 @@
 return [
     'accessKey' => 'AMAADhVllVHWLXqXnvvJ7aunHMiS82-6c8cO5HBW',
     'secretKey' => 'anA9J2RD2JT34txNNyCWxlei8qWyB_EBpIwWJo7F',
-    'bucket'    => 'shiguangji',
-    'domain'    => 'http://ptlew3grt.bkt.clouddn.com/',
+    'bucket'    => 'cool-t',
+    'domain'    => 'http://pw9m4qlrm.bkt.clouddn.com/',
 ];
 
 

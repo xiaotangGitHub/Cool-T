@@ -111,8 +111,8 @@ class Login extends Controller
             if( $admin['time_bar']['value'] < time() ) return json( [ 'code' => 403, 'msg' => '账号已失效，请联系超级管理员' ] );
         }
 
-        //session存入
-        setAdminInfo( $admin );
+        //session存入 12小时
+        setAdminInfo( $admin, 43200 );
 
         if( !getAdminInfo() ) return json( [ 'code' => 403, 'msg' => '系统异常，请稍后再试' ] );
 

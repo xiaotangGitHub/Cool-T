@@ -16,7 +16,6 @@ use app\admin\model\BgAnimate;
 use app\admin\model\ImgsCategory;
 use app\common\model\SystemConfig;
 use think\Controller;
-use think\Db;
 use think\facade\Request;
 
 class Base  extends Controller
