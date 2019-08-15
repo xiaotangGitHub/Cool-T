@@ -85,29 +85,15 @@ class Base  extends Controller
         //获取选中菜单的信息
         $_path = Request::module() .'/'. Request::controller() .'/'. Request::action();
 
-        $checkedMenu = AdminMenu::whereFind( "path = '{$_path}' and parent_id != 0", 'id,parent_id,animate_status,name,path' );
+        $checkedMenu = AdminMenu::whereFind( "path = '{$_path}' and parent_id != 0", 'id,parent_id,name,path' );
 
         if( !$checkedMenu ){
-            $checkedMenu = AdminMenu::whereFind( "path = '{$_path}' and parent_id = 0", 'id,parent_id,animate_status,name' );
+            $checkedMenu = AdminMenu::whereFind( "path = '{$_path}' and parent_id = 0", 'id,parent_id,name' );
 
             $parentId = $checkedMenu['id'];
             $this->assign( 'subSeries', true );
         }else{
             $parentId = $checkedMenu['parent_id'];
-        }
-
-        //是否动态加载该页面( 上、左、右 )
-        $global_menu_animate = SystemConfig::whereValue( [ 'key' => 'global_menu_animate' ], 'value' );
-
-        switch ( $global_menu_animate ){
-            case '-1':
-                $this->assign( 'animate_status', 0 );
-                break;
-            case '1':
-                $this->assign( 'animate_status', 1 );
-                break;
-            default:
-                $this->assign( 'animate_status', $checkedMenu['animate_status'] );
         }
 
         //父节点菜单

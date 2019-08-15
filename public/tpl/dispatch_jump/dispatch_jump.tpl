@@ -25,7 +25,7 @@
         }
         #msg{
             position: absolute;
-            top: 420px;
+            bottom: 230px;
             width: 100%;
             text-align: center;
             font-size: 30px;
@@ -88,6 +88,7 @@
         var interval = setInterval(function(){
             var time = --wait.innerHTML;
             if(time <= 0) {
+                // return false;
                 location.href = href;
                 clearInterval(interval);
             };

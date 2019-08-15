@@ -221,7 +221,7 @@ class Login extends Controller
         if( getAdminInfo() ){
             $this->error( '退出失败，请重试' );
         }else{
-            $this->success( '退出成功，欢迎光临~', '/admin_login' );
+            $this->success( '退出成功', '/admin_login' );
         }
     }
 

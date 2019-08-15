@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>组名<span class="star">*</span></label>
+                    <label>组名</label>
                     <input type="text" name="group_name" class="form-control" value="{$data['group_name']}"  placeholder="分组名称">
                 </div>
                 <div class="form-group">
@@ -50,13 +50,6 @@
                     <select class="form-control" name="status">
                         <option {eq name="$data['status']['value']" value="0"} selected {/eq} value="1">启用/显示</option>
                         <option {eq name="$data['status']['value']" value="1"} selected {/eq} value="0">禁用/隐藏</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>加载动画</label>
-                    <select class="form-control" name="animate_status">
-                        <option {eq name="$data['animate_status']['value']" value="0"} selected {/eq} value="1">启用</option>
-                        <option {eq name="$data['animate_status']['value']" value="1"} selected {/eq} value="0">禁用</option>
                     </select>
                 </div>
                 <div class="form-group">

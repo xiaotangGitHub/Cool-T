@@ -44,10 +44,9 @@
                     <td width="15%">名称</td>
                     <td width="15%">path</td>
                     <td width="10%">排序</td>
-                    <td width="8%">加载动画</td>
                     <td width="8%">默认选中</td>
                     <td width="10%">状态</td>
-                    <td width="25%">操作</td>
+                    <td width="12%">操作</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,7 +61,6 @@
                             </td>
                             <td>{$val['path']}</td>
                             <td>{$val['sort']}</td>
-                            <td>{$val['animate_status']['text']|raw}</td>
                             <td>{$val['checked']['text']|raw}</td>
                             <td>{$val['status']['text']|raw}</td>
                             <td>
@@ -74,9 +72,6 @@
                                 <a href="{:url( request()->controller().'/edit', [ 'id' => $val['id'] ] )}">
                                     <button class="btn btn-primary">修改</button>
                                 </a>
-
-                                <button onclick="ctSetField(this,{ 'id':{$val['id']}, 'field':'animate_status', 'value':{$val['animate_status']['value']} })" class="{$val['animate_status']['btnClass']}">{$val['animate_status']['btnText']}</button>
-
                                 <button onclick="ctSetField(this,{ 'id':{$val['id']}, 'field':'status', 'value':{$val['status']['value']} })" class="{$val['status']['btnClass']}">{$val['status']['btnText']}</button>
 
                                 <button class="btn btn-danger del" data-id="{$val['id']}">删除</button>

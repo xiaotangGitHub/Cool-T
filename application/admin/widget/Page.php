@@ -129,8 +129,7 @@ class Page extends Controller
                         <a class="btn btn-primary ctTable_cancleAll">取消</a>
                         <a class="btn btn-success" onclick="ctSetField(this,{ \'id\':\'checkedAll\', \'field\':\'status\', \'value\':1 })">批量显示</a>
                         <a class="btn btn-warning" onclick="ctSetField(this,{ \'id\':\'checkedAll\', \'field\':\'status\', \'value\':0 })">批量隐藏</a>
-                        <a class="btn btn-success" onclick="ctSetField(this,{ \'id\':\'checkedAll\', \'field\':\'animate_status\', \'value\':1 })">批量开启动画</a>
-                        <a class="btn btn-warning" onclick="ctSetField(this,{ \'id\':\'checkedAll\', \'field\':\'animate_status\', \'value\':0 })">批量关闭动画</a>
+  
                         <a class="btn btn-danger ctTable_delAll">批量删除</a>
                     </div>
                     <div class="pull-right">

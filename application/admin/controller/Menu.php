@@ -196,10 +196,6 @@ class Menu extends Base
                             $status = false;
                         }
                 break;
-            //加载动画
-            case 'animate_status':
-                        $status = BgAnimate::whereInSetField( 'id', $id, 'animate_status', $value );
-                break;
         }
 
         if( isset( $status ) ) $this->endAction( $status, '设置菜单状态' );

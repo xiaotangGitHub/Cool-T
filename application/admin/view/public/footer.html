@@ -4,13 +4,6 @@
     <span><a target="_blank" href="{$copyrightUrl}">{$copyrightText}</a></span>
 </footer>
 
-<!-- 动画加载 Start -->
-{if condition="$animate_status eq 1"}
-    <img id="rabbit" src="__ADMIN__/public/rabbit.png" alt="飞行的兔纸">
-    {load href="__ADMIN__/public/animate.css"}
-{/if}
-<!-- 动画加载 End -->
-
 <!-- 菜单高亮 Start -->
 {present name="$highlight"}
     <input type="hidden" id="highlight_path" value="{:url( request()->module().'/'.request()->controller().'/'.$highlight )}" >
