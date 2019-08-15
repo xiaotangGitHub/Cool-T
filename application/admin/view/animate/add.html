@@ -1,0 +1,35 @@
+{include file="public/header"}
+{include file="public/left"}
+    <section class="container" id="container">
+        <div class="box">
+            <div class="head">
+                <h2>{$menuTitle}</h2>
+                <div class="head-right">
+                    <button class="btn btn-primary go-back">返回</button>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <form class="col-md-8 col-md-offset-1 ct-form-submit" data-url="" data-method="POST" >
+                <div class="form-group">
+                    <label>主题<span class="star">*</span></label>
+                    <input type="text" name="key" required class="form-control"  placeholder="主题名">
+                </div>
+                <div class="form-group">
+                    <label>文件<span class="star">*</span></label>
+                    <input type="text" name="filename" required class="form-control"  placeholder="完整路径">
+                </div>
+                <div class="form-group">
+                    <label>状态</label>
+                    <select class="form-control" name="status">
+                        <option value="1">启用</option>
+                        <option value="0">禁用</option>
+                    </select>
+                </div>
+                <div class="form-group pdt10">
+                    <button type="submit" class="btn btn-primary">添加</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{include file="public/footer"}

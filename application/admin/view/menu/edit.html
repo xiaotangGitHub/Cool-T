@@ -1,0 +1,73 @@
+{include file="public/header"}
+{include file="public/left"}
+    <section class="container" id="container">
+        <div class="box">
+            <div class="head">
+                <h2>编辑菜单</h2>
+                <div class="head-right">
+                    <button class="btn btn-primary go-back">返回</button>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <form class="col-md-8 col-md-offset-1 ct-form-submit" data-url="" data-method="POST" >
+                <div class="form-group">
+                    <label>菜单类型</label>
+                    <select {if condition="$sonCount gt 0"} readonly {/if} class="form-control" name="parent_id">
+                        <option value="0">顶级菜单</option>
+                        {volist name="menuSelect" id="val"}
+                            {neq name="$data['id']" value="$val['id']"}
+                                <option {if condition="$data['parent_id'] eq $val['id']"} selected {/if} value="{$val['id']}">{$val['name']}</option>
+                            {/neq}
+                        {/volist}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>名称<span class="star">*</span></label>
+                    <input type="text" required name="name" class="form-control" value="{$data['name']}"  placeholder="菜单名称">
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="star">*</span>module：</span>
+                        <input required type="text" name="module" class="form-control" value="{$data['path'][0]}" placeholder="模块"  {if condition="$sonCount gt 0"} readonly {/if} >
+                        <span class="input-group-addon"><span class="star">*</span>controller：</span>
+                        <input required type="text" name="controller" class="form-control" value="{$data['path'][1]}" placeholder="控制器" {if condition="$sonCount gt 0"} readonly {/if} >
+                        <span class="input-group-addon"><span class="star">*</span>method：</span>
+                        <input required type="text" name="action" class="form-control" value="{$data['path'][2]}" placeholder="方法" {if condition="$sonCount gt 0"} readonly {/if} >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>组名<span class="star">*</span></label>
+                    <input type="text" name="group_name" class="form-control" value="{$data['group_name']}"  placeholder="分组名称">
+                </div>
+                <div class="form-group">
+                    <label>排序<span class="star">*</span></label>
+                    <input type="number" name="sort" class="form-control" value="{$data['sort']}"  placeholder="菜单排序">
+                </div>
+                <div class="form-group">
+                    <label>状态</label>
+                    <select class="form-control" name="status">
+                        <option {eq name="$data['status']['value']" value="0"} selected {/eq} value="1">启用/显示</option>
+                        <option {eq name="$data['status']['value']" value="1"} selected {/eq} value="0">禁用/隐藏</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>加载动画</label>
+                    <select class="form-control" name="animate_status">
+                        <option {eq name="$data['animate_status']['value']" value="0"} selected {/eq} value="1">启用</option>
+                        <option {eq name="$data['animate_status']['value']" value="1"} selected {/eq} value="0">禁用</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <textarea class="form-control" name="description" rows="4">{$data['description']}</textarea>
+                </div>
+                <div class="form-group pdt10">
+                    <input type="hidden" name="id" value="{$data['id']}" >
+                    <button type="submit" class="btn btn-primary">修改</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{include file="public/footer"}

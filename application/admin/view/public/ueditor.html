@@ -1,0 +1,19 @@
+{load href="__PLUGINS__/ueditor/ueditor.config.js,__PLUGINS__/ueditor/ueditor.all.min.js,__PLUGINS__/ueditor/lang/zh-cn/zh-cn.js"}
+<div id="ct_editor_box">
+    <script id="ct_editor" type="text/plain">
+        {present name="data['content']"}
+           {$data['content']|htmlspecialchars_decode|raw}
+        {/present}
+    </script>
+</div>
+<script>
+    var ueditor;
+    $(function () {
+        ueditor = UE.getEditor('ct_editor');
+        ueditor.ready(function () {
+            ueditor.setHeight( 450 );
+        });
+    });
+
+</script>
+

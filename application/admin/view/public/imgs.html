@@ -1,0 +1,98 @@
+{load href="__ADMIN__/public/imgs.css"}
+<div id="imgs-shade"></div>
+<div id="imgs-resource">
+    <div class="imgs-header">
+        <div class="pull-left">我的图库</div>
+        <div class="pull-right imgs-close glyphicon glyphicon-remove"></div>
+    </div>
+    <div class="imgs-left pull-left">
+        <div class="imgs-dir-action">
+            <i class="glyphicon glyphicon-plus add-imgs">新建文件夹</i>
+            <i class="glyphicon glyphicon-trash del-imgs">删除文件夹</i>
+        </div>
+        <div class="imgs-dir-list">
+            <ul>
+                {volist name="imgsCategory" key="key" id="val"}
+                <li>
+                    <i class="glyphicon glyphicon-folder-open imgs-dir-icon"></i>
+                    <input type="text" class="imgs-dir-name input" readonly value="{$val['name']}">
+                    <i class="glyphicon glyphicon-pencil edit-imgs" data-id="{$val['id']}"></i>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+    <div class="imgs-right pull-right">
+        <div class="imgs-right-head">
+            <button class="btn btn-success ctUploadResourceImgs">添加图片</button>
+            <button class="btn btn-primary move-imgs-action">移动图片到</button>
+            <button class="btn btn-danger del-img">删除图片</button>
+        </div>
+        <div class="imgs-resource-list">
+            <ul class="imgs-resource-list-ul">
+                <!--                <li>
+                    <img src="/static/logo.png">
+                    <p class="filename">文件名称</p>
+                    <div class="imgs-resource-selected">
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                </li>
+                <li>
+                    <img src="/static/logo.png">
+                    <p class="filename">文件名称</p>
+                    <div class="imgs-resource-selected">
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                </li>
+                <li>
+                    <img src="/static/logo.png">
+                    <p class="filename">文件名称</p>
+                    <div class="imgs-resource-selected">
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                </li>
+                <li>
+                    <img src="/static/logo.png">
+                    <p class="filename">文件名称</p>
+                    <div class="imgs-resource-selected">
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                </li>-->
+            </ul>
+            <button class="btn btn-success" id="eq-img-resource">使用选中的图片</button>
+            <div id="imgs-resource-list-page"></div>
+            <i class="load-imgs layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+            <i class="none-imgs layui-icon layui-icon-picture-fine"></i>
+        </div>
+    </div>
+
+    <!-- 角色 model -->
+    <div class="md-container md-effect-8" id="moveImgsCategory-modal">
+        <div class="md-content" id="bg-black">
+            <h3 id="bg-warning" class="o010">移 动 图 片 至</h3>
+            <div class="modalData">
+                <ul class="clearfix">
+
+                </ul>
+            </div>
+            <div class="modal-foot">
+                <button class="btn btn-warning eq-move-action">确定</button>
+                <button class="btn btn-default md-close">取消</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script>
+    var addImgsCategory = "{:url('CommonAction/addImgsCategory')}";
+    var editImgsCategory = "{:url('CommonAction/editImgsCategory')}";
+    var delImgsCategory = "{:url('CommonAction/delImgsCategory')}";
+    var getImgsResourceUrl = "{:url('CommonAction/getImgsResource')}";
+    var delImgsResourceUrl = "{:url('CommonAction/delImgsResource')}";
+    var moveImgsResourceUrl = "{:url('CommonAction/moveImgsResource')}";
+</script>
+{load href="__ADMIN__/public/imgs.js"}

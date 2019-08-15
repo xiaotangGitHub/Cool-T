@@ -1,0 +1,5 @@
+runtime/
+.idea/
+public/uploads/
+config/database.php
+application/xcxshop/controller/.DS_Store

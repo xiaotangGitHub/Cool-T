@@ -1,0 +1,61 @@
+.alert-relation-box .search-form{
+    height: 60px;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+    width: 95%;
+    padding: 13px 0;
+    margin-left: 2.5%;
+}
+.alert-relation-box .search-form label{
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+    color: #999;
+}
+.alert-relation-box .ul-list-data{
+
+}
+.alert-relation-box .ul-list-data li{
+    position: relative;
+    min-height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    width: 95%;
+    margin-left: 2.5%;
+}
+.alert-relation-box .ul-list-data li a{
+    color: #428bca;
+    display: block;
+    padding-right: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.alert-relation-box .ul-list-data li a:hover{
+    text-decoration: underline;
+}
+.alert-relation-box .ul-list-data li button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+.alert-relation-box .ul-list-data li input{
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+.alert-relation-box .page-footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+.alert-relation-box .page-footer button{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+}

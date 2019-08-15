@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+.box{
+    width: 550px;
+    height: 550px;
+    background: rgba(98,86,86,1);
+    border-radius: 10px;
+    animation: box 1s ease;
+    animation-fill-mode:forwards;
+    box-shadow: 0px 0px 25px rgba(224, 198, 198);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -800px;
+    margin:auto;
+    z-index: -1;
+}
+ @keyframes box {
+     60% {
+         background: rgba(98,86,86,0.9);
+         top:130px;
+     }
+     70% {
+         background: rgba(98,86,86,0.8);
+         top:110px;
+     }
+     80% {
+         background: rgba(98,86,86,0.7);
+         top:125px;
+     }
+     90% {
+         background: rgba(98,86,86,0.6);
+         top:115px;
+     }
+     100% {
+        background: rgba(98,86,86,0.4);
+        top:120px;
+     }
+}
+ .container{
+     width:550px;
+     height:550px;
+     border:1px solid white;
+     border-top: 0;
+     position:absolute;
+     top: 120px;
+     left: 0;
+     right: 0;
+     margin: 0 auto;
+     box-shadow: 0px 0px 25px rgba(224, 198, 198);
+     border-radius:10px;
+ }
+ header{
+     width: 100%;
+     text-align: center;
+     padding-top: 50px;
+     font-size: 30px;
+     letter-spacing: 10px;
+     color: white;
+ }
+.login-input{
+    width: 400px;
+    margin-left: 75px;
+    height: 50px;
+    margin-top: 50px;
+    background: rgba(255,255,255,0.5);
+    outline-color: invert ;
+    outline-style: none ;
+    outline-width: 0px ;
+    border: none ;
+    border-style: none ;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    color: #585050;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 10px;
+}
+.user{
+    background-image: url("./1.png");
+}
+.pass{
+    background-image: url("./2.png");
+}
+.yzm{
+    background-image: url("./3.png");
+}
+#btn{
+    width: 300px;
+    margin-top: 50px;
+    margin-left: 125px;
+    height: 50px;
+    font-size: 20px;
+    background: rgba(195,102,102,0.8);
+    border-radius: 10px;
+    outline-color: invert ;
+    outline-style: none ;
+    outline-width: 0px ;
+    border: none ;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.resetPass{
+    position: absolute;
+    right: 70px;
+    top: 260px;
+    font-size: 12px;
+    color: rgb(150, 130, 130);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.yzmImg{
+    width: 100px;
+    position: absolute;
+    top: 352px;
+    right: 65px;
+    cursor: pointer;
+    color: #58aa41;
+}
+

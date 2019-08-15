@@ -1,0 +1,18 @@
+{notempty name="adminUser['weather']"}
+    {load href="__ADMIN__/public/right.css"}
+    <article id="article">
+        <div class="cool-t-title">
+            <div><img src="/static/logo.png" alt="Yestar" style="width: 130px"></div>
+            <i class="down glyphicon glyphicon-arrow-down"></i>
+        </div>
+        {volist name="$weather" id="val"}
+        <dl>
+            <dt>{$val['date']}</dt>
+            <dd><span class="span1">天气：</span><span class="span2">{$val['type']}</span></dd>
+            <dd><span class="span1">风向：</span><span class="span2">{$val['fengxiang']}</span></dd>
+            <dd><span class="span1">最低温度：</span><span class="span2">{$val['low']}</span></dd>
+            <dd><span class="span1">最高温度：</span><span class="span2">{$val['high']}</span></dd>
+        </dl>
+        {/volist}
+    </article>
+{/notempty}

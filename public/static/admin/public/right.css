@@ -1,0 +1,54 @@
+#article{
+    background: rgba(255,255,255,0.5);
+    width: 190px;
+    position: absolute;
+    right:0;
+    top: 80px;
+    min-height: 900px;
+    z-index: 9;
+}
+#article .cool-t-title{
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 3px 3px 3px #000000;
+    color: white;
+    height: 55px;
+    line-height: 55px;
+    position: relative;
+}
+#article .down{
+    font-size: 10px;
+    position: absolute;
+    top: 50px;
+    text-shadow: 0px 3px 1px #4e4e4e;
+}
+#article dl{
+    color: white;
+    width: 100%;
+    text-shadow: 1px 1px 0 #484848;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+#article dt{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+#article dd{
+    text-align: center;
+    font-size: 15px;
+    clear: both;
+}
+#article dd .span1{
+    width: 100px;
+    display: block;
+    float: left;
+    text-align: right;
+    margin-top: 10px;
+}
+#article dd .span2{
+    display: block;
+    float: left;
+    margin-top: 10px;
+}

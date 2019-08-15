@@ -1,0 +1,152 @@
+{include file="public/header"}
+{include file="public/left"}
+    <section class="container" id="container">
+        <div class="box">
+            <div class="head">
+                <h2>
+                    {$menuTitle}
+                </h2>
+                <div class="head-right">
+                    <a href="{:url( request()->controller().'/add')}"><button class="btn btn-primary">新增用户</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="search-form">
+            <form action="" method="get">
+                <div class="tables-searchbox">
+                    <div class="pull-left">
+                        <label class="search-label">用户：</label>
+                        <input type="text" name="user_name" value="{$_GET['user_name'] ?: ''}" class="input" placeholder="管理员账号">
+                    </div>
+                    <div class="pull-left">
+                        <label class="search-label">Email：</label>
+                        <input type="text" name="email" value="{$_GET['email'] ?: ''}" class="input" placeholder="管理员邮箱">
+                    </div>
+                    <div class="pull-left">
+                        <label class="search-label">手机号：</label>
+                        <input type="text" name="mobile" value="{$_GET['mobile'] ?: ''}" class="input" placeholder="管理员手机号">
+                    </div>
+                    <div class="pull-left search-btn">
+                        <button id="search" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <button class="btn btn-default" id="reset" type="button"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="main">
+            <table class="ctTables">
+                <thead>
+                <tr>
+                    <td width="5%"></td>
+                    <td>账号</td>
+                    <td>手机号</td>
+                    <td>邮箱</td>
+                    <td>二维码组</td>
+                    <td>系统角色</td>
+                    <td>IP限制</td>
+                    <td>状态</td>
+                    <td>截止时间</td>
+                    <td width="20%">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {volist name="list" id="val" empty="$_empty"}
+                        <tr>
+                            <td><input type="checkbox" class="checkbox-id" value="{$val['id']}"></td>
+                            <td>{$val['user_name']}</td>
+                            <td>{$val['mobile']|default='未绑定手机号'}</td>
+                            <td>{$val['email']}</td>
+                            <td>{$val['program_code_parent_group']|default='未分配'}</td>
+                            <td>{$val['roleName']|default='未设置'}</td>
+                            <td>{$val['ip']['text']}</td>
+                            <td>{$val['status']['text']|raw}</td>
+                            <td>{$val['time_bar']['text']}</td>
+                            <td>
+                                <button class="btn btn-success setRole" data-type="get" data-id="{$val['id']}">系统角色</button>
+                                <a href="{:url( request()->controller().'/edit', [ 'id' => $val['id'] ] )}">
+                                    <button class="btn btn-primary">编辑</button>
+                                </a>
+                                <button onclick="ctSetField(this,{ 'id':{$val['id']}, 'field':'status', 'value':{$val['status']['value']} })" class="{$val['status']['btnClass']}">{$val['status']['btnText']}</button>
+                                <button class="btn btn-danger del" data-id="{$val['id']}">删除</button>
+                            </td>
+                        </tr>
+                    {/volist}
+                </tbody>
+            </table>
+            {:widget('Page/html', [ $list, 2 ] )}
+        </div>
+    </section>
+<script>
+    var setRole_url = "{:url('Admin/setRole')}";
+    $(function () {
+        var id;
+        /**
+         * 角色设置
+         */
+        $('.setRole').click(function () {
+            var type = $(this).data('type');
+            id = $(this).data('id');
+            if( type == 'get' ){
+                $('#setRole-modal .setRole').attr( 'data-id', id );
+                ctAjax( setRole_url, { 'type':type, 'id':id },function (e) {
+                    var html = '';
+                    var length = e.length;
+                    if( length < 1 ){
+                        ctMsg( '请添加角色后设置', 'error' );
+                        return false;
+                    }
+                    for( var i=0; i<length; i++ ){
+                        if( e[i]['checked'] ){
+                            html += '<li class="pull-left mr15 mt5">' +
+                                '<input name="role_id" type="checkbox" checked value="'+ e[i]['id'] +'" class="pull-left">' +
+                                '<div class="mt4 pl3 pull-left">'+ e[i]['name'] +'</div>' +
+                                '</li>';
+                        }else{
+                            html += '<li class="pull-left mr15 mt5">' +
+                                '<input name="role_id" type="checkbox" value="'+ e[i]['id'] +'" class="pull-left">' +
+                                '<div class="mt4 pl3 pull-left">'+ e[i]['name'] +'</div>' +
+                                '</li>';
+                        }
+                    }
+                    $('#setRole-modal .modalData ul').html( html );
+                },{'load':false});
+                ctShowModal( '#setRole-modal', 100 );
+            }else if( type == 'set' ){
+                var data = [];
+                $('#setRole-modal input[name=role_id]:checked').each(function (index,e) {
+                    data[index] = {};
+                    data[index].user_id = id;
+                    data[index].role_id = $(e).val();
+                });
+
+                ctAjax( setRole_url,{'data':data,'id':id,'type':type},function (e) {
+                    if( e.code == 200 ){
+                        ctCloseModal();
+                        ctMsg( e.msg, 'success', function () {
+                            ctTime({'type':1, 'time':500});
+                        } );
+                    }else{
+                        ctMsg( e.msg, 'error' );
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+<!-- 角色 model -->
+<div class="md-container md-effect-8" id="setRole-modal">
+    <div class="md-content" id="bg-black">
+        <h3 id="bg-warning" class="o010">角 色 列 表</h3>
+        <div class="modalData">
+            <ul class="clearfix">
+
+            </ul>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-warning setRole" data-type="set" data-id="0" >保存</button>
+            <button class="btn btn-default md-close">取消</button>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>{$_title}</title>
+    {load href="__LOGIN__/jquery.js,__PLUGINS__/toast/jquery.toast.css,__PLUGINS__/toast/jquery.toast.js"}
+    {load href="__PLUGINS__/loading/loading.css,__PLUGINS__/loading/animate.css,__PLUGINS__/loading/loading.js"}
+    {load href="__PLUGINS__/modal/dist/jquery.niftymodals.css,__PLUGINS__/modal/dist/jquery.niftymodals.js,__PLUGINS__/bootstrap/css/bootstrap.css"}
+    {load href="__PLUGINS__/laydate/laydate.js"}
+    {load href="__LOGIN__/login.css,__LOGIN__/login.js,__ADMIN__/tpFunc.js"}
+    {load href="__PLUGINS__/layui/layui.js"}
+</head>
+<body>
+    <div class="box"></div>
+    <div class="container" id="logining">
+        <header>Cool-Team</header>
+        <form method="post">
+            <input maxlength="16" name="user" autofocus type="text" placeholder="账号" class="user login-input" />
+            <input maxlength="16" name="pass" type="password" placeholder="密码" class="pass login-input" />
+            <input maxlength="4" name="yzm" type="text" placeholder="验证码" class="yzm login-input" />
+            <input type="hidden" id="token" name="token" >
+            <button type="button" id="btn">登 陆</button>
+
+            <a class="resetPass" title="点击找回" onclick="ctShowModal('#pass-modal');" >找回密码</a>
+            <img class="yzmImg" title="点击更换" onclick="this.src=this.src+'?'" src="{:url('api/Captcha/create')}" alt="">
+
+        </form>
+    </div>
+    <script src="{$_filename}"></script>
+
+    <!-- 找回密码modal -->
+    <div class="md-container md-effect-8" id="pass-modal">
+        <div class="md-content">
+            <h3>找 回 密 码</h3>
+            <div>
+                <div class="form-group">
+                    <label>账 号</label>
+                    <input type="text" required class="form-control user_name" placeholder="请输入要找回密码的账号">
+                </div>
+                <div class="form-group">
+                    <label>邮 箱</label>
+                    <input type="email" required class="form-control email" placeholder="请输入账号绑定的邮箱">
+                </div>
+            </div>
+            <div class="modal-foot">
+                <button class="btn btn-primary" id="sendMail">发送</button>
+                <button class="btn btn-default md-close">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
+    <script>
+        var codeErrorMsg = "{$codeErrorMsg}";
+        var logging = "{:url('Login/logging')}";
+        var sendEmail = "{:url('Login/sendMail')}";
+        var msgAudioStatus = "{$msgAudioStatus}";
+    </script>
+</body>
+</html>

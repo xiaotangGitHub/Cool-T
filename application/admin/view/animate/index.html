@@ -1,0 +1,52 @@
+{include file="public/header"}
+{include file="public/left"}
+    <section class="container" id="container">
+        <div class="box">
+            <div class="head">
+                <h2>
+                    {$menuTitle}
+                </h2>
+                <div class="head-right">
+                    <a href="{:url( request()->controller().'/add')}"><button class="btn btn-primary">新增{$menuTitle}</button></a>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <table class="ctTables">
+                <thead>
+                <tr>
+                    <td width="5%"></td>
+                    <td width="25%">主题名</td>
+                    <td width="25%">文件</td>
+                    <td width="10%">状态</td>
+                    <td width="10%">添加时间</td>
+                    <td width="10%">修改时间</td>
+                    <td width="15%">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {volist name="list" id="val" empty="$_empty"}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class='checkbox-id' value="{$val['id']}">
+                            </td>
+                            <td>{$val['key']}</td>
+                            <td>{$val['filename']}</td>
+                            <td>{$val['status']['text']|raw}</td>
+                            <td>{$val['create_time']|default='--'}</td>
+                            <td>{$val['update_time']|default='--'}</td>
+                            <td>
+                                <a href="{:url( request()->controller().'/edit', [ 'id' => $val['id'] ] )}">
+                                    <button class="btn btn-primary">修改</button>
+                                </a>
+                                <button onclick="ctSetField(this,{ 'id':{$val['id']}, 'field':'status', 'value':{$val['status']['value']} })" class="{$val['status']['btnClass']}">{$val['status']['btnText']}</button>
+                                <button class="btn btn-danger del" data-id="{$val['id']}">删除</button>
+                            </td>
+                        </tr>
+                    {/volist}
+                </tbody>
+            </table>
+            {:widget('Page/html', [ $list, 2 ] )}
+        </div>
+    </section>
+{include file="public/footer"}

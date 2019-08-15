@@ -1,0 +1,77 @@
+{include file="public/header"}
+{include file="public/left"}
+    <section class="container" id="container">
+        <div class="box">
+            <div class="head">
+                <h2>
+                    {$menuTitle}
+                </h2>
+                <div class="head-right">
+                    <a href="{:url( request()->controller().'/add')}"><button class="btn btn-primary">新增{$menuTitle}</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="search-form">
+            <form action="" method="get">
+                <div class="tables-searchbox">
+                    <div class="pull-left">
+                        <label class="search-label">配置名：</label>
+                        <input type="text" name="key" value="{$_GET['key'] ?: ''}" class="input" placeholder="配置名称">
+                    </div>
+                    <div class="pull-left search-btn">
+                        <button id="search" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <button class="btn btn-default" id="reset" type="button"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="main">
+            <table class="ctTables">
+                <thead>
+                <tr>
+                    <td width="5%"></td>
+                    <td width="15%">配置名</td>
+                    <td width="15%">配置值</td>
+                    <td width="10%">添加时间</td>
+                    <td width="15%">修改时间</td>
+                    <td width="30%">描述</td>
+                    <td width="10%">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {volist name="list" id="val" empty="$_empty"}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class='checkbox-id' value="{$val['id']}">
+                            </td>
+                            <td>{$val['key']}</td>
+                            <td>
+                                {eq name="$val['type']" value="0"}
+                                {$val['value']}
+                                {else /}
+                                    {empty name="$val['value']|strstr=','"}
+                                        {$val['value']|imgsHttp=true|raw}
+                                    {else /}
+                                        {volist name="$val['value']|imgsHttp=true" id="img"}
+                                            {$img|raw}
+                                        {/volist}
+                                    {/empty}
+                                {/eq}
+                            </td>
+                            <td>{$val['create_time']|default='--'}</td>
+                            <td>{$val['update_time']|default='--'}</td>
+                            <td>{$val['desc']}</td>
+                            <td>
+                                <a href="{:url( request()->controller().'/edit', [ 'id' => $val['id'] ] )}">
+                                    <button class="btn btn-primary">修改</button>
+                                </a>
+                                <button class="btn btn-danger del" data-id="{$val['id']}">删除</button>
+                            </td>
+                        </tr>
+                    {/volist}
+                </tbody>
+            </table>
+            {:widget('Page/html', [ $list, 1 ] )}
+        </div>
+    </section>
+{include file="public/footer"}

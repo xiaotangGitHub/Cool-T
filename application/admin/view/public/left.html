@@ -1,0 +1,18 @@
+{load href="__ADMIN__/public/left.css"}
+<nav id="nav" class="content-left fl">
+<!--    <form action="{:url('Menu/search')}"  id="searchMenu">
+        <input type="text" class="input searchMenu mt10" placeholder="搜索菜单" />
+    </form>-->
+    {volist name="leftMenu" id="val"}
+        <dl>
+            <dt>{$key}</dt>
+            {volist name="leftMenu[$key]" id="v"}
+                {present name="subSeries"}
+                    <dd data-path="{:url($v['path'])}" {if condition="$v['checked'] eq 1"} class="active" {/if}>{$v['name']}</dd>
+                {else /}
+                    <dd data-path="{:url($v['path'])}" {if condition="$_path eq strtolower($v['path'])"} class="active" {/if}>{$v['name']}</dd>
+                {/present}
+            {/volist}
+        </dl>
+    {/volist}
+</nav>

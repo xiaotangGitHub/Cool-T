@@ -1,0 +1,62 @@
+#nav{
+    width: 190px;
+    min-height: 900px;
+    background: #aedbfd;
+    padding-bottom: 20px;
+    position: absolute;
+    left: 0;
+    top:80px;
+    z-index: 9;
+}
+#nav .searchMenu{
+    width: 160px;
+    padding-left: 35px;
+    margin-left: 15px;
+    height: 30px;
+    font-size: 15px;
+    background: rgba(255,255,255,0.5);
+    outline-color: invert ;
+    outline-style: none ;
+    outline-width: 0px ;
+    border: none ;
+    border-style: none ;
+    background-image: url("search.png");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 10px;
+}
+#nav dl{
+    font-size: 15px;
+    color: white;
+    padding-bottom: 15px;
+    text-shadow: 3px 3px 3px #232020;
+    padding-left: 15px;
+}
+#nav dt{
+    font-weight: bold;
+    padding-top: 15px;
+}
+#nav dd{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#nav dd.active{
+    background: #fde0fd;
+    /* border-radius: 50px 0; */
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+#nav dd:hover{
+    background: #fde0fd;
+    /*border-radius: 50px 0;*/
+}
+#nav dt i{
+    text-shadow: 0px 0px 0px #232020;
+}
