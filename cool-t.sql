@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2019-08-15 14:45:08
+Date: 2019-08-15 17:36:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ct_admin_log_action` (
   `desc` varchar(255) NOT NULL COMMENT '描述',
   `create_time` int(10) unsigned NOT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3365 DEFAULT CHARSET=utf8 COMMENT='管理员操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=3366 DEFAULT CHARSET=utf8 COMMENT='管理员操作日志';
 
 -- ----------------------------
 -- Records of ct_admin_log_action
@@ -173,6 +173,7 @@ INSERT INTO `ct_admin_log_action` VALUES ('3361', '1', 'tangpeng', 'admin/Animat
 INSERT INTO `ct_admin_log_action` VALUES ('3362', '1', 'tangpeng', 'admin/System/edit', '{\"key\":\"admin_logo\",\"type\":\"1\",\"value\":\"\",\"imgs\":[\"uploads\\/20190815\\/b95a44466f6ab9556d485550503a65e2.jpg\"],\"desc\":\"后台LOGO\",\"id\":\"82\"}', '修改系统全局配置', '1565851322');
 INSERT INTO `ct_admin_log_action` VALUES ('3363', '1', 'tangpeng', 'admin/System/edit', '{\"key\":\"qiNiuStatus\",\"type\":\"0\",\"value\":\"1\",\"desc\":\"【 是否启用七牛云 】 1：启用  0：禁用\",\"id\":\"84\"}', '修改系统全局配置', '1565851348');
 INSERT INTO `ct_admin_log_action` VALUES ('3364', '1', 'tangpeng', 'admin/System/edit', '{\"key\":\"admin_logo\",\"type\":\"1\",\"value\":\"\",\"imgs\":[\"b95a44466f6ab9556d485550503a65e2.jpg\"],\"desc\":\"后台LOGO\",\"id\":\"82\"}', '修改系统全局配置', '1565851387');
+INSERT INTO `ct_admin_log_action` VALUES ('3365', '1', 'tangpeng', 'admin/Menu/add', '{\"parent_id\":\"0\",\"name\":\"213\",\"module\":\"123\",\"controller\":\"123\",\"action\":\"213\",\"group_name\":\"\",\"sort\":\"\",\"status\":\"0\",\"description\":\"\"}', '添加菜单', '1565861442');
 
 -- ----------------------------
 -- Table structure for `ct_admin_log_login`
@@ -187,7 +188,7 @@ CREATE TABLE `ct_admin_log_login` (
   `ip` int(10) unsigned NOT NULL COMMENT '登陆IP',
   `create_time` int(10) unsigned NOT NULL COMMENT '登陆时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=294 DEFAULT CHARSET=utf8 COMMENT='管理员登陆日志';
+) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8 COMMENT='管理员登陆日志';
 
 -- ----------------------------
 -- Records of ct_admin_log_login
@@ -215,6 +216,11 @@ INSERT INTO `ct_admin_log_login` VALUES ('290', '1', 'tangpeng', '13611626493', 
 INSERT INTO `ct_admin_log_login` VALUES ('291', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565840937');
 INSERT INTO `ct_admin_log_login` VALUES ('292', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565847218');
 INSERT INTO `ct_admin_log_login` VALUES ('293', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565851214');
+INSERT INTO `ct_admin_log_login` VALUES ('294', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565852118');
+INSERT INTO `ct_admin_log_login` VALUES ('295', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565852534');
+INSERT INTO `ct_admin_log_login` VALUES ('296', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565859654');
+INSERT INTO `ct_admin_log_login` VALUES ('297', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565861150');
+INSERT INTO `ct_admin_log_login` VALUES ('298', '1', 'tangpeng', '13611626493', '1257390133@qq.com', '2130706433', '1565861430');
 
 -- ----------------------------
 -- Table structure for `ct_admin_log_pass`
@@ -249,51 +255,51 @@ CREATE TABLE `ct_admin_menu` (
   `sort` int(5) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `group_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '未分组' COMMENT '分组',
   `checked` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0：默认不选中 1：默认选中',
-  `animate_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否动态加载页面 0：否 1：是',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=562 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限菜单表';
 
 -- ----------------------------
 -- Records of ct_admin_menu
 -- ----------------------------
-INSERT INTO `ct_admin_menu` VALUES ('2', '系统', 'admin/Menu/index', '0', '系统管理', '1', '9999', '', '0', '0', '1541037348', '1565839954');
-INSERT INTO `ct_admin_menu` VALUES ('12', '全局配置', 'admin/System/index', '2', '系统配置', '1', '0', '系统配置', '0', '0', '1540890946', '1561429371');
-INSERT INTO `ct_admin_menu` VALUES ('13', '菜单管理', 'admin/Menu/index', '2', '添加菜单', '1', '20', '权限管理', '1', '1', '1541130827', '0');
-INSERT INTO `ct_admin_menu` VALUES ('14', '添加菜单', 'admin/Menu/add', '2', '菜单管理', '0', '20', '权限管理', '0', '0', '1541130779', '0');
-INSERT INTO `ct_admin_menu` VALUES ('21', '角色管理', 'admin/Role/index', '2', '管理员角色管理', '1', '35', '权限管理', '0', '0', '1541130729', '0');
-INSERT INTO `ct_admin_menu` VALUES ('24', '编辑菜单', 'admin/Menu/edit', '2', '编辑菜单', '0', '20', '权限管理', '0', '0', '1541130767', '0');
-INSERT INTO `ct_admin_menu` VALUES ('25', '添加角色', 'admin/Role/add', '2', '', '0', '35', '权限管理', '0', '0', '1541130720', '0');
-INSERT INTO `ct_admin_menu` VALUES ('26', '修改角色', 'admin/Role/edit', '2', '', '0', '35', '权限管理', '0', '0', '1541130710', '0');
-INSERT INTO `ct_admin_menu` VALUES ('27', '用户管理', 'admin/Admin/index', '2', '管理员管理', '1', '30', '权限管理', '0', '0', '1541130757', '0');
-INSERT INTO `ct_admin_menu` VALUES ('28', '添加管理员', 'admin/Admin/add', '2', '', '0', '30', '权限管理', '0', '0', '1541130748', '0');
-INSERT INTO `ct_admin_menu` VALUES ('29', '编辑管理员', 'admin/Admin/edit', '2', '', '0', '30', '权限管理', '0', '0', '1541130739', '0');
-INSERT INTO `ct_admin_menu` VALUES ('41', '登陆日志', 'admin/Logs/login', '2', '管理员登陆日志', '1', '40', '日志', '0', '0', '1541130679', '0');
-INSERT INTO `ct_admin_menu` VALUES ('42', '操作日志', 'admin/Logs/adminAction', '2', '管理员操作日志', '1', '45', '日志', '0', '0', '1541130669', '0');
-INSERT INTO `ct_admin_menu` VALUES ('43', '密码找回日志', 'admin/Logs/mailPass', '2', '管理员通过登陆页使用邮箱找回密码', '1', '50', '日志', '0', '0', '1541130658', '0');
-INSERT INTO `ct_admin_menu` VALUES ('47', '个人管理员设置', 'admin/adminUser/查看子菜单', '0', '个人管理员操作：\r\n账号设置\r\n操作日志\r\n登陆日志', '0', '999999', '', '0', '0', '1541058159', '0');
-INSERT INTO `ct_admin_menu` VALUES ('48', '账号设置', 'admin/adminUser/setAccount', '47', '', '0', '0', '', '0', '0', '1540800336', '0');
-INSERT INTO `ct_admin_menu` VALUES ('49', '操作日志', 'admin/adminUser/actionLogs', '47', '个人管理员操作日志', '0', '0', '', '0', '0', '1540802551', '0');
-INSERT INTO `ct_admin_menu` VALUES ('50', '登陆日志', 'admin/adminUser/loginLogs', '47', '个人管理员登陆日志\r\n', '0', '0', '', '0', '0', '1540803774', '0');
-INSERT INTO `ct_admin_menu` VALUES ('51', '添加全局配置', 'admin/System/add', '2', '', '0', '0', '系统配置', '0', '0', '1541131012', '1561429378');
-INSERT INTO `ct_admin_menu` VALUES ('52', '修改全局配置', 'admin/System/edit', '2', '', '0', '0', '系统配置', '0', '0', '1540865382', '1561429386');
-INSERT INTO `ct_admin_menu` VALUES ('53', '角色权限', 'admin/Role/permission', '2', '角色权限设置', '0', '35', '权限管理', '0', '0', '1541130688', '0');
-INSERT INTO `ct_admin_menu` VALUES ('55', '背景主题', 'admin/Animate/index', '2', '背景主题动画设置', '1', '10', '系统配置', '0', '0', '1541130857', '0');
-INSERT INTO `ct_admin_menu` VALUES ('56', '添加背景主题', 'admin/Animate/add', '2', '', '0', '10', '系统配置', '0', '0', '1541130848', '0');
-INSERT INTO `ct_admin_menu` VALUES ('57', '修改背景主题', 'admin/Animate/edit', '2', '', '0', '10', '系统配置', '0', '0', '1541130837', '0');
-INSERT INTO `ct_admin_menu` VALUES ('87', '删除全局配置', 'admin/System/del', '2', '', '0', '0', '系统配置', '0', '0', '1541131036', '1561429394');
-INSERT INTO `ct_admin_menu` VALUES ('88', '删除背景主题', 'admin/Animate/del', '2', '', '0', '10', '系统配置', '0', '0', '1541131104', '0');
-INSERT INTO `ct_admin_menu` VALUES ('89', '设置单值-背景主题', 'admin/Animate/setField', '2', '', '0', '10', '系统配置', '0', '0', '1541131216', '0');
-INSERT INTO `ct_admin_menu` VALUES ('90', '删除菜单', 'admin/Menu/del', '2', '', '0', '20', '权限管理', '0', '0', '1541131263', '0');
-INSERT INTO `ct_admin_menu` VALUES ('91', '设置单值-菜单管理', 'admin/Menu/setField', '2', '', '0', '20', '权限管理', '0', '0', '1541131307', '0');
-INSERT INTO `ct_admin_menu` VALUES ('92', '删除管理员', 'admin/Admin/del', '2', '', '0', '30', '权限管理', '0', '0', '1541131390', '0');
-INSERT INTO `ct_admin_menu` VALUES ('93', '设置单值-管理员管理', 'admin/Admin/setField', '2', '', '0', '30', '权限管理', '0', '0', '1541131444', '0');
-INSERT INTO `ct_admin_menu` VALUES ('94', '删除角色', 'admin/Role/del', '2', '', '0', '35', '权限管理', '0', '0', '1541131493', '0');
-INSERT INTO `ct_admin_menu` VALUES ('95', '设置单值-角色管理', 'admin/Role/setField', '2', '', '0', '35', '权限管理', '0', '0', '1541131529', '0');
-INSERT INTO `ct_admin_menu` VALUES ('96', '设置权限', 'admin/Role/permission', '2', '', '0', '35', '权限管理', '0', '0', '1541131610', '0');
-INSERT INTO `ct_admin_menu` VALUES ('97', '为管理员分配系统角色', 'admin/Admin/setRole', '2', '', '0', '30', '权限管理', '0', '0', '1544076504', '0');
-INSERT INTO `ct_admin_menu` VALUES ('560', '系统错误日志', 'admin/Exception/index', '2', '', '1', '60', '日志', '0', '0', '1560518089', '1560518089');
+INSERT INTO `ct_admin_menu` VALUES ('2', '系统', 'admin/Menu/index', '0', '系统管理', '1', '9999', '', '0', '1541037348', '1565839954');
+INSERT INTO `ct_admin_menu` VALUES ('12', '全局配置', 'admin/System/index', '2', '系统配置', '1', '0', '系统配置', '0', '1540890946', '1561429371');
+INSERT INTO `ct_admin_menu` VALUES ('13', '菜单管理', 'admin/Menu/index', '2', '添加菜单', '1', '20', '权限管理', '1', '1541130827', '0');
+INSERT INTO `ct_admin_menu` VALUES ('14', '添加菜单', 'admin/Menu/add', '2', '菜单管理', '0', '20', '权限管理', '0', '1541130779', '0');
+INSERT INTO `ct_admin_menu` VALUES ('21', '角色管理', 'admin/Role/index', '2', '管理员角色管理', '1', '35', '权限管理', '0', '1541130729', '0');
+INSERT INTO `ct_admin_menu` VALUES ('24', '编辑菜单', 'admin/Menu/edit', '2', '编辑菜单', '0', '20', '权限管理', '0', '1541130767', '0');
+INSERT INTO `ct_admin_menu` VALUES ('25', '添加角色', 'admin/Role/add', '2', '', '0', '35', '权限管理', '0', '1541130720', '0');
+INSERT INTO `ct_admin_menu` VALUES ('26', '修改角色', 'admin/Role/edit', '2', '', '0', '35', '权限管理', '0', '1541130710', '0');
+INSERT INTO `ct_admin_menu` VALUES ('27', '用户管理', 'admin/Admin/index', '2', '管理员管理', '1', '30', '权限管理', '0', '1541130757', '0');
+INSERT INTO `ct_admin_menu` VALUES ('28', '添加管理员', 'admin/Admin/add', '2', '', '0', '30', '权限管理', '0', '1541130748', '0');
+INSERT INTO `ct_admin_menu` VALUES ('29', '编辑管理员', 'admin/Admin/edit', '2', '', '0', '30', '权限管理', '0', '1541130739', '0');
+INSERT INTO `ct_admin_menu` VALUES ('41', '登陆日志', 'admin/Logs/login', '2', '管理员登陆日志', '1', '40', '日志', '0', '1541130679', '0');
+INSERT INTO `ct_admin_menu` VALUES ('42', '操作日志', 'admin/Logs/adminAction', '2', '管理员操作日志', '1', '45', '日志', '0', '1541130669', '0');
+INSERT INTO `ct_admin_menu` VALUES ('43', '密码找回日志', 'admin/Logs/mailPass', '2', '管理员通过登陆页使用邮箱找回密码', '1', '50', '日志', '0', '1541130658', '0');
+INSERT INTO `ct_admin_menu` VALUES ('47', '个人管理员设置', 'admin/adminUser/查看子菜单', '0', '个人管理员操作：\r\n账号设置\r\n操作日志\r\n登陆日志', '0', '999999', '', '0', '1541058159', '0');
+INSERT INTO `ct_admin_menu` VALUES ('48', '账号设置', 'admin/adminUser/setAccount', '47', '', '0', '0', '', '0', '1540800336', '0');
+INSERT INTO `ct_admin_menu` VALUES ('49', '操作日志', 'admin/adminUser/actionLogs', '47', '个人管理员操作日志', '0', '0', '', '0', '1540802551', '0');
+INSERT INTO `ct_admin_menu` VALUES ('50', '登陆日志', 'admin/adminUser/loginLogs', '47', '个人管理员登陆日志\r\n', '0', '0', '', '0', '1540803774', '0');
+INSERT INTO `ct_admin_menu` VALUES ('51', '添加全局配置', 'admin/System/add', '2', '', '0', '0', '系统配置', '0', '1541131012', '1561429378');
+INSERT INTO `ct_admin_menu` VALUES ('52', '修改全局配置', 'admin/System/edit', '2', '', '0', '0', '系统配置', '0', '1540865382', '1561429386');
+INSERT INTO `ct_admin_menu` VALUES ('53', '角色权限', 'admin/Role/permission', '2', '角色权限设置', '0', '35', '权限管理', '0', '1541130688', '0');
+INSERT INTO `ct_admin_menu` VALUES ('55', '背景主题', 'admin/Animate/index', '2', '背景主题动画设置', '1', '10', '系统配置', '0', '1541130857', '0');
+INSERT INTO `ct_admin_menu` VALUES ('56', '添加背景主题', 'admin/Animate/add', '2', '', '0', '10', '系统配置', '0', '1541130848', '0');
+INSERT INTO `ct_admin_menu` VALUES ('57', '修改背景主题', 'admin/Animate/edit', '2', '', '0', '10', '系统配置', '0', '1541130837', '0');
+INSERT INTO `ct_admin_menu` VALUES ('87', '删除全局配置', 'admin/System/del', '2', '', '0', '0', '系统配置', '0', '1541131036', '1561429394');
+INSERT INTO `ct_admin_menu` VALUES ('88', '删除背景主题', 'admin/Animate/del', '2', '', '0', '10', '系统配置', '0', '1541131104', '0');
+INSERT INTO `ct_admin_menu` VALUES ('89', '设置单值-背景主题', 'admin/Animate/setField', '2', '', '0', '10', '系统配置', '0', '1541131216', '0');
+INSERT INTO `ct_admin_menu` VALUES ('90', '删除菜单', 'admin/Menu/del', '2', '', '0', '20', '权限管理', '0', '1541131263', '0');
+INSERT INTO `ct_admin_menu` VALUES ('91', '设置单值-菜单管理', 'admin/Menu/setField', '2', '', '0', '20', '权限管理', '0', '1541131307', '0');
+INSERT INTO `ct_admin_menu` VALUES ('92', '删除管理员', 'admin/Admin/del', '2', '', '0', '30', '权限管理', '0', '1541131390', '0');
+INSERT INTO `ct_admin_menu` VALUES ('93', '设置单值-管理员管理', 'admin/Admin/setField', '2', '', '0', '30', '权限管理', '0', '1541131444', '0');
+INSERT INTO `ct_admin_menu` VALUES ('94', '删除角色', 'admin/Role/del', '2', '', '0', '35', '权限管理', '0', '1541131493', '0');
+INSERT INTO `ct_admin_menu` VALUES ('95', '设置单值-角色管理', 'admin/Role/setField', '2', '', '0', '35', '权限管理', '0', '1541131529', '0');
+INSERT INTO `ct_admin_menu` VALUES ('96', '设置权限', 'admin/Role/permission', '2', '', '0', '35', '权限管理', '0', '1541131610', '0');
+INSERT INTO `ct_admin_menu` VALUES ('97', '为管理员分配系统角色', 'admin/Admin/setRole', '2', '', '0', '30', '权限管理', '0', '1544076504', '0');
+INSERT INTO `ct_admin_menu` VALUES ('560', '系统错误日志', 'admin/Exception/index', '2', '', '1', '60', '日志', '0', '1560518089', '1560518089');
+INSERT INTO `ct_admin_menu` VALUES ('561', '213', '123/123/213', '0', '', '0', '0', '', '0', '1565861442', '1565861442');
 
 -- ----------------------------
 -- Table structure for `ct_admin_role`
@@ -425,7 +431,7 @@ CREATE TABLE `ct_role_admin_menu` (
   `role_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '角色ID',
   `permission_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3711 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色-菜单对应表';
+) ENGINE=InnoDB AUTO_INCREMENT=3712 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色-菜单对应表';
 
 -- ----------------------------
 -- Records of ct_role_admin_menu
@@ -539,6 +545,7 @@ INSERT INTO `ct_role_admin_menu` VALUES ('3707', '9', '41');
 INSERT INTO `ct_role_admin_menu` VALUES ('3708', '9', '42');
 INSERT INTO `ct_role_admin_menu` VALUES ('3709', '9', '43');
 INSERT INTO `ct_role_admin_menu` VALUES ('3710', '9', '560');
+INSERT INTO `ct_role_admin_menu` VALUES ('3711', '1', '561');
 
 -- ----------------------------
 -- Table structure for `ct_send_mail_log`
@@ -601,7 +608,7 @@ CREATE TABLE `ct_system_exception` (
   `line` int(4) unsigned DEFAULT NULL COMMENT '错误行数',
   `create_time` int(10) unsigned NOT NULL COMMENT '发生错误时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2781 DEFAULT CHARSET=utf8 COMMENT='系统异常错误日志';
+) ENGINE=MyISAM AUTO_INCREMENT=2786 DEFAULT CHARSET=utf8 COMMENT='系统异常错误日志';
 
 -- ----------------------------
 -- Records of ct_system_exception
@@ -1635,3 +1642,8 @@ INSERT INTO `ct_system_exception` VALUES ('2777', '0', 'method not exists:app\\a
 INSERT INTO `ct_system_exception` VALUES ('2778', '0', 'Undefined index: ', 'D:\\wamp\\www\\cool-t\\application\\common.php', '240', '1565840093');
 INSERT INTO `ct_system_exception` VALUES ('2779', '0', 'Undefined index: ', 'D:\\wamp\\www\\cool-t\\application\\common.php', '241', '1565840133');
 INSERT INTO `ct_system_exception` VALUES ('2780', '0', 'module not exists:static', 'D:\\wamp\\www\\cool-t\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565840747');
+INSERT INTO `ct_system_exception` VALUES ('2781', '0', 'module not exists:index', 'D:\\wamp\\www\\cool-t\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565859595');
+INSERT INTO `ct_system_exception` VALUES ('2782', '0', 'module not exists:index', 'D:\\wamp\\www\\cool-t\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565859603');
+INSERT INTO `ct_system_exception` VALUES ('2783', '0', 'module not exists:index', 'D:\\wamp\\www\\cool-t\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565859606');
+INSERT INTO `ct_system_exception` VALUES ('2784', '0', 'module not exists:index', 'D:\\wamp\\www\\oa\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565859620');
+INSERT INTO `ct_system_exception` VALUES ('2785', '0', 'module not exists:index', 'D:\\wamp\\www\\cool-t\\thinkphp\\library\\think\\route\\dispatch\\Module.php', '63', '1565861132');
